@@ -111,7 +111,7 @@ class Googlemaps {
 		
 		$path['positions'] = array();							// The array of two or more positions (lat/long co-ordinate or address) at which the path will appear
 		$path['weight'] = '';									// The thickness of the path in pixels. Defaults to 5 pixels
-		$path['color'] = '';									// The color of the icon to use for the marker. A hex value (eg. #990000, or #FFFFCCFF or a word; black, brown, green, purple, yellow, blue, gray, orange, red, white)
+		$path['color'] = '';									// The color of the path. A hex value (eg. #990000, or #FFFFCCFF or a word; black, brown, green, purple, yellow, blue, gray, orange, red, white)
 		$path['fillcolor'] = '';								// Indicates the path is a polygonal area and specifies the fill color within that area. The array of locations positions need not be a "closed" loop; the Static Map server will automatically join the first and last points. Note, however, that any stroke on the exterior of the filled area will not be closed unless you specifically provide the same beginning and end location.
 		
 		$path_output = '';
