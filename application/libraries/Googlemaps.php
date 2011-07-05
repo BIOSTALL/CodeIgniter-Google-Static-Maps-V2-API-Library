@@ -18,6 +18,7 @@ class Googlemaps {
 	var $center						= "";						// Sets the default center location (lat/long co-ordinate or address) of the map image. Required if markers not present. If blank and markers exist will default center
 	var $https						= FALSE;					// If set to TRUE will load the API over HTTPS, allowing you to utilize the API within your HTTPS secure application
 	var $image_format				= "";						// The image format output. Values accepted are 'png8', 'png' (default), 'png32', 'gif', 'jpg', 'jpg-baseline'
+	var $include_img_tag			= TRUE;						// If set to TRUE will include the full <img> tag. If FALSE just the image source will be returned
 	var $language					= "";						// Defines the language to use for display of labels on map tiles. Note that this parameter is only supported for some country tiles
 	var $map_id						= "map_canvas";				// The ID of the image that is output containing the map image
 	var $map_height					= 500;						// The height of the map image in pixels
@@ -168,7 +169,7 @@ class Googlemaps {
 		if ($this->map_type!="") { $this->parameters['maptype'] = $this->map_type; }
 		if ($this->language!="") { $this->parameters['language'] = $this->language; }
 		
-		$this->output .= '<img src="'.$apiLocation.'.com/maps/api/staticmap?';
+		$this->output .= $apiLocation.'.com/maps/api/staticmap?';
 		
 		foreach ($this->parameters as $key=>$value) {
 			$this->output .= $key.'='.urlencode($value).'&';
@@ -196,7 +197,9 @@ class Googlemaps {
 		}	
 		//
 		
-		$this->output .= '" id="'.$this->map_id.'" alt="Google Map" />';
+		if ($this->include_img_tag) { 
+			$this->output = '<img src="'.$this->output.'" id="'.$this->map_id.'" alt="Google Map" />'; 
+		}
 		
 		return $this->output;
 	
