@@ -197,6 +197,8 @@ class Googlemaps {
 		}	
 		//
 		
+		if (strlen($this->output)>2048) { die("Google static map URLs must be 2048 characters or less. Current length is ".strlen($this->output)); }
+		
 		if ($this->include_img_tag) { 
 			$this->output = '<img src="'.$this->output.'" id="'.$this->map_id.'" alt="Google Map" />'; 
 		}
