@@ -24,6 +24,7 @@ class Googlemaps {
 	var $map_height					= 500;						// The height of the map image in pixels
 	var $map_type					= "";						// The default map type. Values accepted are 'roadmap' (default), 'satellite', 'terrain' or 'hybrid'
 	var $map_width					= 500;						// The width of the map image in pixels
+	var $scale						= 1;						// Use the scale parameter to return higher-resolution map images, particularly useful when displaying maps on mobile devices
 	var $sensor						= FALSE;					// Set to TRUE if being used on a device that can detect a users location
 	var	$version					= "2";						// Version of the static API being used. Not currently used in the library
 	var $zoom						= "";						// The default zoom level of the map image. Required if markers not present. If blank and markers exist will default zoom to include all markers
@@ -168,6 +169,7 @@ class Googlemaps {
 		if ($this->image_format!="") { $this->parameters['format'] = $this->image_format; }
 		if ($this->map_type!="") { $this->parameters['maptype'] = $this->map_type; }
 		if ($this->language!="") { $this->parameters['language'] = $this->language; }
+		if ($this->scale!="") { $this->parameters['scale'] = $this->scale; }
 		
 		$this->output .= $apiLocation.'.com/maps/api/staticmap?';
 		
